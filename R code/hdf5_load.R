@@ -5,7 +5,7 @@
 h5f = H5Fopen("..\\..\\expedia_data\\data_test.h5")
 
 
-data<-loadhdf5data("..\\..\\expedia_data\\data_test.h5")
+data<-loadhdf5data("..\\..\\expedia_data\\test_as_hdf.h5")
 
 library(rhdf5)
 library(bit64)
