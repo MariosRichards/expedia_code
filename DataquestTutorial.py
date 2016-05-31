@@ -26,15 +26,15 @@ from IPython.display import display, HTML
 import datetime, pickle
 import time
 import tables
-get_ipython().magic('matplotlib inline')
+# get_ipython().magic('matplotlib inline')
 
 import ml_metrics as metrics
 import operator
 import random
 
-https://www.dataquest.io/blog/kaggle-tutorial/
-https://www.kaggle.com/c/expedia-hotel-recommendations/forums/t/20684/a-tutorial-to-get-you-started
-https://www.kaggle.com/manels/expedia-hotel-recommendations/dataquest-tutorial/run/228064
+# https://www.dataquest.io/blog/kaggle-tutorial/
+# https://www.kaggle.com/c/expedia-hotel-recommendations/forums/t/20684/a-tutorial-to-get-you-started
+# https://www.kaggle.com/manels/expedia-hotel-recommendations/dataquest-tutorial/run/228064
 
 # In[39]:
 
@@ -116,7 +116,7 @@ unique_users = train.user_id.unique()
 
 # In[52]:
 
-sel_user_ids = [unique_users[i] for i in sorted(random.sample(range(len(unique_users)), 10000)) ]
+sel_user_ids = [unique_users[i] for i in sorted(random.sample(range(len(unique_users)), 20000)) ]
 
 
 # In[53]:
@@ -126,13 +126,13 @@ sel_train = train[train.user_id.isin(sel_user_ids)]
 
 # In[54]:
 
-t1 = sel_train[((sel_train.year == 2013) | ((sel_train.year == 2014) & (sel_train.month < 8)))]
+# t1 = sel_train[((sel_train.year == 2013) | ((sel_train.year == 2014) & (sel_train.month < 8)))]
 
 
 # In[55]:
 
-t2 = sel_train[((sel_train.year == 2014) & (sel_train.month >= 8))]
-t2 = t2[t2.is_booking == True]
+# t2 = sel_train[((sel_train.year == 2014) & (sel_train.month >= 8))]
+# t2 = t2[t2.is_booking == True]
 
 
 # In[ ]:
@@ -168,8 +168,8 @@ predictions = [most_common_clusters for i in range(t2.shape[0])]
 
 # In[59]:
 
-target = [[l] for l in t2["hotel_cluster"]]
-metrics.mapk(target, predictions, k=5)
+# target = [[l] for l in t2["hotel_cluster"]]
+# metrics.mapk(target, predictions, k=5)
 
 
 # In[60]:
@@ -328,7 +328,7 @@ for index, row in prediction_frame.iterrows():
 
 # In[100]:
 
-metrics.mapk([[l] for l in t2["hotel_cluster"]], preds, k=5)
+# metrics.mapk([[l] for l in t2["hotel_cluster"]], preds, k=5)
 
 
 # In[101]:
@@ -380,7 +380,7 @@ for index, row in t2.iterrows():
 
 # In[105]:
 
-metrics.mapk([[l] for l in t2["hotel_cluster"]], preds, k=5)
+# metrics.mapk([[l] for l in t2["hotel_cluster"]], preds, k=5)
 
 
 # In[106]:
@@ -418,7 +418,7 @@ def f5(seq, idfun=None):
     return result
     
 full_preds = [f5(exact_matches[p] + preds[p] + most_common_clusters)[:5] for p in range(len(preds))]
-metrics.mapk([[l] for l in t2["hotel_cluster"]], full_preds, k=5)
+# metrics.mapk([[l] for l in t2["hotel_cluster"]], full_preds, k=5)
 
 
 # In[ ]:
